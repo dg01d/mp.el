@@ -15,6 +15,14 @@ The short version is that doing it over Oauth would require a shit load of code.
 2. Find dotspacemacs-additional-packages inside .spacemacs and add requests to the list
 3. Add a line to the dotspacemacs/init function inside the setq-default function call that looks like: microblog-auth "ABC", where ABC is your app token. 
 4. Add the following line to dotspacemacs/user-config function: (load "~/.emacs.d/private/mb.el") 
+## Other Micropub
+1. Add mb.el to ~/.emacs.d/private/ or wp.el if you use wordpress
+2. Find dotspacemacs-additional-packages inside .spacemacs and add requests to the list
+3. We need to add three lines inside the setq-default method in dotspacemacs/init
+mb-domain "https://your-domain"
+microblog-auth "your-auth-token"
+4. Add the following line to dotspacemacs/user-config function: (load "~/.emacs.d/private/mb.el") 
+
 ## WordPress
 1. Add wp.el to ~/.emacs.d/private/ or wp.el if you use wordpress
 2. Find dotspacemacs-additional-packages inside .spacemacs and add requests to the list
