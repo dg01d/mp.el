@@ -1,36 +1,24 @@
 # mb.el
-A Emacs Lisp function to post to Micro.blog (either hosted by micro.blog or WordPress based sites. )
+A Emacs Lisp function to post to a [Micropub Endpoint](https://www.w3.org/TR/micropub/) 
 
 
-## Hosted by Micro.blog
-It requires the request module, and a variable named mb-auth with a microblog app token. 
-## Wordpress
-It requires the request module, and that you define the following variables: mb-domain, mb-username and mb-password. You also need to add [this plugin](https://github.com/WP-API/Basic-Auth). It enables us to login with username and password through Basic Auth against the WordPress REST API. 
+## Requirements
+
+- the request module 
+- full server endpoint, capable of handling posts in json-format
+- access token with scope `create` to the micrpub endpoint. Copy an existing one or use https://gimme-a-token.5eb.nl
 
 The short version is that doing it over Oauth would require a shit load of code. 
 
-# Installation with Spacemacs.
-## Hosted
-1. Add mb.el to ~/.emacs.d/private/ or wp.el if you use wordpress
+## Installation with Spacemacs.
+
+1. Add mb.el to ~/.emacs.d/private/ 
 2. Find dotspacemacs-additional-packages inside .spacemacs and add requests to the list
-3. Add a line to the dotspacemacs/init function inside the setq-default function call that looks like: mb-auth "ABC", where ABC is your app token. 
-4. Add the following line to dotspacemacs/user-config function: (load "~/.emacs.d/private/mb.el") 
-## Other Micropub
-1. Add mb.el to ~/.emacs.d/private/ or wp.el if you use wordpress
-2. Find dotspacemacs-additional-packages inside .spacemacs and add requests to the list
-3. We need to add three lines inside the setq-default method in dotspacemacs/init
-mb-domain "https://your-domain"
-mb-auth "your-auth-token"
+3. We need to add two lines inside the setq-default method in dotspacemacs/init
+`mb-domain "https://your-domain/micropub-endpoint"`
+`mb-auth "your-auth-token"`
 4. Add the following line to dotspacemacs/user-config function: (load "~/.emacs.d/private/mb.el") 
 
-## WordPress
-1. Add wp.el to ~/.emacs.d/private/ or wp.el if you use wordpress
-2. Find dotspacemacs-additional-packages inside .spacemacs and add requests to the list
-3. We need to add three lines inside the setq-default method in dotspacemacs/init
-mb-domain "your-domain"
-mb-username "your username"
-mb-password "your password
-4. Add the following line to dotspacemacs/user-config function: (load "~/.emacs.d/private/wp.el") 
-# Usage
+## Usage
 
 Start a new buffer, write what you want to post, and then run M-x post2mb; SPC SPC post2mb if you are using spacemacs
